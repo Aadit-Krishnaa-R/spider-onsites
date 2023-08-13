@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+    pollSCM '*/5 * * * *'
+    }
     stages {
         stage('Build') {
             steps {
@@ -20,9 +23,9 @@ pipeline {
         stage('Deliver') {
             steps {
                 echo 'Deliver....'
-                sh 'docker login -u aaditkrishnaar -p @ngryB1rd'
-                // sh 'docker tag my-app aaditkrishnaar/jenkins-cicd'
-                sh 'docker push aaditkrishnaar/jenkins-cicd'
+                // sh 'docker login -u aaditkrishnaar -p @ngryB1rd'
+                // // sh 'docker tag my-app aaditkrishnaar/jenkins-cicd'
+                // sh 'docker push aaditkrishnaar/jenkins-cicd'
             }
         }
     }

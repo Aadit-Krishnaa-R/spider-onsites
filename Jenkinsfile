@@ -21,8 +21,8 @@ pipeline {
             steps {
                 echo 'Deliver....'
                 sh 'docker login -u aaditkrishnaar -p @ngryB1rd'
-                sh 'docker tag my-app aaditkrishnaar/jenkins-cicd:spider-onsite'
-                sh 'docker push aaditkrishnaar/jenkins-cicd'
+                sh 'docker tag my-app aaditkrishnaar/jenkins-cicd'
+                sh 'docker push aaditkrishnaar/jenkins-cicd:spider-onsite'
             }
         }
     }

@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                docker build -t my-app .
+                docker build -t aaditkrishnaar/jenkins-cicd .
                 '''
             }
         }
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                docker run -p9000:80 -d --name app1 my-app
+                docker run -p9000:80 -d --name app1 aaditkrishnaar/jenkins-cicd
                 '''
             }
         }
@@ -22,7 +22,7 @@ pipeline {
                 echo 'Deliver....'
                 sh 'docker login -u aaditkrishnaar -p @ngryB1rd'
                 // sh 'docker tag my-app aaditkrishnaar/jenkins-cicd'
-                sh 'docker push my-app'
+                sh 'docker push aaditkrishnaar/jenkins-cicd'
             }
         }
     }

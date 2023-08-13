@@ -20,9 +20,10 @@ pipeline {
         stage('Deliver') {
             steps {
                 echo 'Deliver....'
-                sh '''
-                echo "doing delivery stuff.."
-                '''
+                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhub-pwd')]) {
+                    sh 'docker login -u aaditkrishnaar -p ${dockerhub-pwd}'
+                }
+                sh 'docker push aaditkrishnaar/jenkins-cicd'
             }
         }
     }

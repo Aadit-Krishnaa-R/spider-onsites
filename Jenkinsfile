@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                sudo docker build -t my-app .
+                docker build -t my-app .
                 '''
             }
         }
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                sudo docker run -p9000:80 -d --name app my-app
+                docker run -p9000:80 -d --name app my-app
                 '''
             }
         }
